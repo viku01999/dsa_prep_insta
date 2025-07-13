@@ -11,8 +11,8 @@ function askNumbers() {
     rl.question('Enter a number:', (input) => {
         const number = parseInt(input);
 
-        if (isNaN(number) || number < 2) {
-            console.log('Please enter a valid number greater than 1.');
+        if (isNaN(number)) {
+            console.log('Please enter a valid number.');
         } else {
             const isPrime = isThisPrimeNumber(number);
             if (isPrime) {
@@ -29,8 +29,9 @@ function askNumbers() {
 askNumbers();
 
 function isThisPrimeNumber(number) {
-    if (number === 2) return true;
-    for (let i = 2; i <= Math.sqrt(number); i++){
+    if (number < 2) return false;
+
+    for (let i = 2; i <= Math.sqrt(number); i++) {
         if (number % i === 0) {
             return false;
         }
